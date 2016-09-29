@@ -1,7 +1,7 @@
 #Code works on speech commands
 #For manual control make changes in Xbee as mentioned in Xbee function 
-#import basic library to control the bot hardware
 
+#importing basic libraries to control the bot hardware
 import RPi.GPIO as GPIO
 import time
 import socket
@@ -10,13 +10,15 @@ from xbee import XBee
 from serial import Serial
 
 #change your port according to your laptop. It may be same
+#This is the port in your laptop to which the XBee is connected.
 PORT = '/dev/ttyAMA0'
 BAUD = 9600
 ser = Serial(PORT, BAUD)
 xbee = XBee(ser)
 
 #****************************************#
-#import the necessary packages
+#importing the necessary packages
+#for image processing tasks
 from picamera.array import PiRGBArray     #As there is a resolution problem in raspberry pi, will not be able to capture frames by VideoCapture
 from picamera import PiCamera
 import cv2
@@ -412,7 +414,8 @@ def  PROGRAM():
                                       centre_y=y+((h)/2)
                                       cv2.circle(frame,(int(centre_x),int(centre_y)),3,(0,110,255),-1)
                                       centre_x-=80
-                                      centre_y=6--centre_y
+					#check if centre_y is correct
+                                      centre_y=6-centre_y
                                       print 'centre_x:',centre_x,'centre_y:',centre_y,'area:',area
                                 initial=400
 
